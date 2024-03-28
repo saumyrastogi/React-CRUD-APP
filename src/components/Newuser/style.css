@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  justify-content: space-evenly;
+}
+.name,
+.userName {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+label {
+  padding-top: 5px;
+}
