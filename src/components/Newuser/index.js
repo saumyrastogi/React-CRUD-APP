@@ -7,17 +7,18 @@ export default function Newuser(props) {
     userName: "",
     id: null
   });
+  const { name = '', userName = '', id = '' } = userInfo;
   useEffect(() => {
     if (props.editUserObj.id !== null) {
       setUserInfo({ ...props.editUserObj });
     }
   }, [props]);
-  const [isValid, setIsValid] = useState(true);
+
   const [genId, setId] = useState(3);
   const handleChange = (e) => {
     const userObj = {
-      name: e.target.id === "name" ? e.target.value : userInfo.name,
-      userName: e.target.id === "username" ? e.target.value : userInfo.userName,
+      name: e.target.id === "name" ? e.target.value : name,
+      userName: e.target.id === "username" ? e.target.value : userName,
       id: null
     };
     setUserInfo(userObj);
@@ -40,7 +41,7 @@ export default function Newuser(props) {
       <div className="form">
         <div className="name">
           <input
-            value={userInfo?.name}
+            value={name}
             onChange={handleChange}
             id="name"
             placeholder="Name..."
@@ -49,7 +50,7 @@ export default function Newuser(props) {
         </div>
         <div className="userName">
           <input
-            value={userInfo?.userName}
+            value={userName}
             onChange={handleChange}
             id="username"
             placeholder="User name..."
@@ -59,7 +60,7 @@ export default function Newuser(props) {
       </div>
       <button
         onClick={() => {
-          handleBtnClick(userInfo);
+          name && userName && handleBtnClick(userInfo);
         }}
       >
         Add User
